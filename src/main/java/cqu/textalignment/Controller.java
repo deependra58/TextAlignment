@@ -1,7 +1,5 @@
 package cqu.textalignment;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -39,8 +40,10 @@ public class Controller implements Initializable {
     private RadioButton centred;
     @FXML
     private RadioButton justified;
-   
-    
+
+
+    private Document document=new Document();
+
 
     /**
      * Initializes the controller class.
@@ -63,11 +66,17 @@ public class Controller implements Initializable {
 
     @FXML
     private void clearButtonHandler(ActionEvent event) {
+        originalTextarea.clear();
+        left.setSelected(false);
+        right.setSelected(false);
+        centred.setSelected(false);
+        justified.setSelected(false);
         System.out.println("clear Invoked");
     }
 
     @FXML
     private void defaultButtonHandler(ActionEvent event) {
+        originalTextarea.setText(document.getUnformattedText());
         System.out.println("default invoked");
     }
 

@@ -56,6 +56,11 @@ public class Controller implements Initializable {
         right.setToggleGroup(tg);
         centred.setToggleGroup(tg);
         justified.setToggleGroup(tg);
+
+
+
+        originalTextarea.setText(document.getUnformattedText());
+
     }
 
     @FXML
@@ -92,6 +97,10 @@ public class Controller implements Initializable {
 
     @FXML
     private void leftAlignHandler(ActionEvent event) {
+        LeftAligned leftAligned=new LeftAligned();
+        Paragraph paragraph=new Paragraph(leftAligned);
+        paragraph.setText(document.getUnformattedText());
+        alignedTextarea.setText(paragraph.alignText());
         System.out.println("left aligned");
     }
 
